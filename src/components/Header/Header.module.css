@@ -1,11 +1,9 @@
 .header {
     display: flex;
-    position: sticky;
-    top: 0;
     background-color: royalblue;
     grid-area: h;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
-    z-index: 2;
+    z-index: 3;
 }
 
 .header img {

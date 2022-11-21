@@ -1,0 +1,32 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    margin: 15px 15px 0 15px;
+    height: 200px;
+}
+
+.dialogsItems {
+    padding: 10px 10px 0 10px;
+    background-color: aquamarine;
+    box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+.dialogsItems dialog {
+
+}
+
+.dialogsItems .active {
+    color: gold;
+    font-size: 16px;
+}
+
+.messages {
+    padding: 10px 10px 0 10px;
+    background-color: aqua;
+    z-index: 1;
+}
+
+.messages .message {
+
+}
