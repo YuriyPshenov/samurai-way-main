@@ -19,6 +19,7 @@
     max-height: 50px;
     border: 1px solid salmon;
     border-radius: 5px;
+    outline: none;
 }
 
 .textAreaZone button {
