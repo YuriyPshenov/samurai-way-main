@@ -12,11 +12,13 @@
     z-index: 2;
 }
 
-.dialogsItems dialog {
-
+.dialog a {
+    text-decoration: none;
+    color: slategrey;
+    font-size: 16px;
 }
 
-.dialogsItems .active {
+.dialog a.active {
     color: gold;
     font-size: 16px;
 }
