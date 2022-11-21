@@ -2,6 +2,8 @@
     padding: 20px 0 0 20px;
     background-color: powderblue;
     grid-area: n;
+    box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
 .item {

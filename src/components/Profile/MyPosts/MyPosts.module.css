@@ -30,5 +30,5 @@
 
 .textAreaZone textarea:hover {
     border: 1px solid lightcyan;
-    box-shadow: 1px 1px 12px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 12px 1px rgba(0, 0, 0, 0.4);
 }
