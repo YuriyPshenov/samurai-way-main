@@ -3,7 +3,7 @@
     height: 60px;
     display: flex;
     flex-direction: row;
-    background-color: lavender;
+    background-color: lightcyan;
     border-radius: 5px;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.4);
     align-items: center;
@@ -21,7 +21,21 @@
     margin-left: 10px;
 }
 
-.post span {
+.post:hover {
+    background-color: lavender;
+}
+
+.likesArea {
+    display: flex;
     margin-right: 10px;
     margin-left: auto;
+    align-items: center;
+}
+
+.likesArea img {
+    padding-top: 3px;
+    margin-left: 5px;
+    filter: invert(92%) sepia(31%) saturate(421%) hue-rotate(243deg) brightness(90%) contrast(108%);
+    width: 14px;
+    height: 14px;
 }

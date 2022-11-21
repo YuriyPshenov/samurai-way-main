@@ -6,3 +6,9 @@
     width: 60%;
     margin: 0 auto;
 }
+
+.app-wrapper-content {
+    display: grid;
+    background-color: cornflowerblue;
+    grid-area: c;
+}
