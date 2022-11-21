@@ -17,3 +17,20 @@
     height: 400px;
 }
 
+.usersAvatarDescription {
+    display: flex;
+    margin-left: 20px;
+    width: 800px;
+    height: 100px;
+    align-items: center;
+}
+
+.usersAvatarDescription img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    outline: 1px solid lightslategray;
+    margin-right: 20px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.6);
+}
+

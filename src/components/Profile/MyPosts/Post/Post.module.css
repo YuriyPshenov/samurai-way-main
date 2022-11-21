@@ -1,16 +1,27 @@
 .post {
     margin-bottom: 10px;
+    height: 60px;
     display: flex;
+    flex-direction: row;
+    background-color: lavender;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.4);
+    align-items: center;
 }
 
 .post img {
+    margin-left: 10px;
     width: 40px;
     height: 40px;
 }
 
 .item {
     font-size: 14px;
-    color: gold;
+    color: black;
     margin-left: 10px;
-    align-self: center;
+}
+
+.post span {
+    margin-right: 10px;
+    margin-left: auto;
 }
