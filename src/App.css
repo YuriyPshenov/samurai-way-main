@@ -2,40 +2,7 @@
     display: grid;
     grid-template-areas: 'h h' 'n c';
     grid-template-rows: 60px 1fr;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: 200px 1fr;
     width: 60%;
     margin: 0 auto;
-}
-
-.header {
-    display: flex;
-    position: sticky;
-    top: 0;
-    background-color: royalblue;
-    grid-area: h;
-}
-
-.header img {
-    margin-left: 20px;
-    width: 30px;
-    align-self: center;
-}
-
-.nav {
-    padding: 20px 0 0 20px;
-    background-color: powderblue;
-    grid-area: n;
-}
-
-.content {
-    display: grid;
-    background-color: cornflowerblue;
-    grid-area: c;
-    justify-items: center;
-}
-
-.content img {
-    margin-top: 20px;
-    width: 1280px;
-    height: 720px;
 }

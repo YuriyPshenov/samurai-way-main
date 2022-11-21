@@ -1,0 +1,15 @@
+.content {
+    display: grid;
+    background-color: cornflowerblue;
+    grid-area: c;
+}
+
+.content img {
+    width: 1280px;
+    height: 720px;
+}
+
+.item {
+    color: gold;
+}
+

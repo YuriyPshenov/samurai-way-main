@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: royalblue;
+    grid-area: h;
+}
+
+.header img {
+    margin-left: 20px;
+    width: 30px;
+    align-self: center;
+}
