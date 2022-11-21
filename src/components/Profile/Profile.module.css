@@ -4,12 +4,16 @@
     grid-area: c;
 }
 
-.content img {
-    width: 1280px;
-    height: 720px;
-}
-
 .item {
     color: gold;
+}
+
+.mainImgForContent {
+    justify-self: center;
+}
+
+.mainImgForContent img {
+    width: 800px;
+    height: 400px;
 }
 
