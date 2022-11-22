@@ -1,14 +1,15 @@
 import React from 'react';
 import s from './MyPosts.module.css'
-import Post from "./Post/Post";
+import Post, {PostPropsType} from "./Post/Post";
 
-const MyPosts = () => {
 
-    const postData = [
-        {id: 1, message: 'Hi, how are you?', likesCount: 6},
-        {id: 2, message: 'Its my first post', likesCount: 8},
-        {id: 3, message: '?', likesCount: 4},
-    ]
+type MyPostsPropsType = {
+    postData: Array<PostPropsType>
+}
+
+const MyPosts = (props: MyPostsPropsType) => {
+
+    const {postData} = props
 
     return (
         <div className={s.myPosts}>

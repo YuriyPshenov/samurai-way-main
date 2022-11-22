@@ -2,10 +2,10 @@ import React from 'react';
 import './Post.module.css';
 import s from './Post.module.css'
 
-type PostPropsType = {
+export type PostPropsType = {
+    id: string
     message: string
     likesCount: number
-    id: string
 }
 
 const Post = (props: PostPropsType) => {
