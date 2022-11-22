@@ -2,17 +2,20 @@ import React from 'react';
 import './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {PostDataPropsType} from "../../App";
+import {PostsDataType} from "../../App";
 
+type ProfilePropsType = {
+    postsData: Array<PostsDataType>
+}
 
-const Profile = (props: PostDataPropsType) => {
+const Profile = (props: ProfilePropsType) => {
 
-    const {postData} = props
+    const {postsData} = props
 
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts postData={postData}/>
+            <MyPosts postsData={postsData}/>
         </div>
     )
 }

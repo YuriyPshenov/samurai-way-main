@@ -10,22 +10,34 @@ import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
 
 
-export type PostDataType = {
+export type PostsDataType = {
     id: string
     message: string
     likesCount: number
 }
 
-export type PostDataPropsType = {
-    postData: Array<PostDataType>
+export type DialogsDataType = {
+    id: string
+    name: string
 }
 
-const App = (props: PostDataPropsType) => {
+export type MessagesDataType = {
+    id: string
+    message: string
+}
 
-    const {postData} = props
+export type IndexDataFromAppPropsType = {
+    postsData: Array<PostsDataType>
+    dialogsData: Array<DialogsDataType>
+    messagesData: Array<MessagesDataType>
+}
 
-    const ProfileWithProps = () => <Profile postData={postData}/>
-    const DialogsWithProps = () => <Dialogs/>
+const App = (props: IndexDataFromAppPropsType) => {
+
+    const {postsData, dialogsData, messagesData} = props
+
+    const ProfileWithProps = () => <Profile postsData={postsData}/>
+    const DialogsWithProps = () => <Dialogs dialogsData={dialogsData} messagesData={messagesData}/>
 
     return (
         <BrowserRouter>
@@ -33,11 +45,8 @@ const App = (props: PostDataPropsType) => {
                 <Header/>
                 <Navbar/>
                 <div className={'app-wrapper-content'}>
-                    {/*<Route path={'/profile'} component={Profile}/>*/}
-                    {/*<Route path={'/dialogs'} component={Dialogs}/>*/}
                     <Route path={'/profile'} render={ProfileWithProps}/>
                     <Route path={'/dialogs'} render={DialogsWithProps}/>
-
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/settings'} component={Settings}/>
@@ -48,4 +57,4 @@ const App = (props: PostDataPropsType) => {
 }
 
 
-export default App
+export default App;

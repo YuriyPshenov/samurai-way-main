@@ -1,12 +1,15 @@
 import React from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {PostDataPropsType} from "../../../App";
+import {PostsDataType} from "../../../App";
 
+type MyPostsPropsType = {
+    postsData: Array<PostsDataType>
+}
 
-const MyPosts = (props: PostDataPropsType) => {
+const MyPosts = (props: MyPostsPropsType) => {
 
-    const {postData} = props
+    const {postsData} = props
 
     return (
         <div className={s.myPosts}>
@@ -15,7 +18,7 @@ const MyPosts = (props: PostDataPropsType) => {
                 <button>Add post</button>
             </div>
             <div>
-                {postData.map(p => <Post key={p.id} id={p.id.toString()} message={p.message} likesCount={p.likesCount}/>)}
+                {postsData.map(p => <Post key={p.id} id={p.id.toString()} message={p.message} likesCount={p.likesCount}/>)}
             </div>
         </div>
     )

@@ -1,10 +1,14 @@
 import React from 'react';
 import './Post.module.css';
 import s from './Post.module.css'
-import {PostDataType} from "../../../../App";
 
+export type PostPropsType = {
+    id: string
+    message: string
+    likesCount: number
+}
 
-const Post = (props: PostDataType) => {
+const Post = (props: PostPropsType) => {
     const {message, likesCount} = props
     return (
         <div className={s.post}>
