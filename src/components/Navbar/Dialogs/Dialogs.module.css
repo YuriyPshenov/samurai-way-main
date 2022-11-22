@@ -1,6 +1,6 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: minmax(100px, 20%) minmax(200px, 80%);
     margin: 15px 15px 0 15px;
     height: 200px;
 }
@@ -27,8 +27,4 @@
     padding: 10px 10px 0 10px;
     background-color: aqua;
     z-index: 1;
-}
-
-.messages .message {
-
 }

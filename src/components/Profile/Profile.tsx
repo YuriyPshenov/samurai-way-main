@@ -2,20 +2,20 @@ import React from 'react';
 import './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {PostsDataType} from "../../App";
+import {ProfilePageType} from "../../App";
 
 type ProfilePropsType = {
-    postsData: Array<PostsDataType>
+    profilePageData: ProfilePageType
 }
 
 const Profile = (props: ProfilePropsType) => {
 
-    const {postsData} = props
+    const {profilePageData} = props
 
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts postsData={postsData}/>
+            <MyPosts postsData={profilePageData.postsData}/>
         </div>
     )
 }

@@ -3,24 +3,23 @@ import './Dialogs.module.css';
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {DialogsDataType, MessagesDataType} from "../../../App";
+import {MessagesPage} from "../../../App";
 
 type DialogsPropsType = {
-    dialogsData: Array<DialogsDataType>
-    messagesData: Array<MessagesDataType>
+    messagesPageData: MessagesPage
 }
 
 const Dialogs = (props: DialogsPropsType) => {
 
-    const {dialogsData, messagesData} = props
+    const {messagesPageData} = props
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                {dialogsData.map(d => <DialogItem key={d.id} name={d.name} id={d.id.toString()}/>)}
+                {messagesPageData.dialogsData.map(d => <DialogItem key={d.id} name={d.name} id={d.id.toString()}/>)}
             </div>
             <div className={s.messages}>
-                {messagesData.map(m => <Message key={m.id} message={m.message} id={m.id.toString()}/>)}
+                {messagesPageData.messagesData.map(m => <Message key={m.id} message={m.message} id={m.id.toString()}/>)}
             </div>
         </div>
     )

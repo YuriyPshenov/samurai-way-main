@@ -26,18 +26,30 @@ export type MessagesDataType = {
     message: string
 }
 
-export type IndexDataFromAppPropsType = {
+export type ProfilePageType = {
     postsData: Array<PostsDataType>
+}
+
+export type MessagesPage = {
     dialogsData: Array<DialogsDataType>
     messagesData: Array<MessagesDataType>
 }
 
-const App = (props: IndexDataFromAppPropsType) => {
+type StateType = {
+    profilePage: ProfilePageType
+    messagesPage: MessagesPage
+}
 
-    const {postsData, dialogsData, messagesData} = props
+type StatePropsType = {
+    state: StateType
+}
 
-    const ProfileWithProps = () => <Profile postsData={postsData}/>
-    const DialogsWithProps = () => <Dialogs dialogsData={dialogsData} messagesData={messagesData}/>
+const App = (props: StatePropsType) => {
+
+    const {state} = props
+
+    const ProfileWithProps = () => <Profile profilePageData={state.profilePage}/>
+    const DialogsWithProps = () => <Dialogs messagesPageData={state.messagesPage}/>
 
     return (
         <BrowserRouter>

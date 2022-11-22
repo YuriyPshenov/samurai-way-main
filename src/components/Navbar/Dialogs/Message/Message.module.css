@@ -23,12 +23,32 @@
     font-size: 16px;
 }
 
-.messages {
-    padding: 10px 10px 0 10px;
-    background-color: aqua;
-    z-index: 1;
+.message {
+    display: flex;
+    flex-direction: column;
 }
 
-.messages .message {
+.message img {
+    width: 20px;
+    height: 20px;
+}
 
+.companionMessage {
+    display: flex;
+    justify-content: start;
+    font-size: 14px;
+}
+
+.companionMessage img {
+    margin-right: 5px;
+}
+
+.userMessage {
+    display: flex;
+    justify-content: end;
+    font-size: 14px;
+}
+
+.userMessage img {
+    margin-left: 5px;
 }
