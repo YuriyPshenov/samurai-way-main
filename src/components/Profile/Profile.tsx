@@ -6,16 +6,17 @@ import {ProfilePageType} from "../../App";
 
 type ProfilePropsType = {
     profilePageData: ProfilePageType
+    addPost: (messagePost: string) => void
 }
 
 const Profile = (props: ProfilePropsType) => {
 
-    const {profilePageData} = props
+    const {profilePageData, addPost} = props
 
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts postsData={profilePageData.postsData}/>
+            <MyPosts postsData={profilePageData.postsData} addPost={addPost}/>
         </div>
     )
 }

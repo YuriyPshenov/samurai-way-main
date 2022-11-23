@@ -1,4 +1,4 @@
-const state = {
+export let state = {
     profilePage: {
         postsData: [
             {id: '1', message: 'Hi, how are you?', likesCount: 6},
@@ -32,4 +32,12 @@ const state = {
     }
 }
 
-export default state;
+export const addPost = (postMessage: string) => {
+    debugger
+    state = {...state,
+        profilePage: {
+            ...state.profilePage,
+            postsData: [{id: '10', message: postMessage, likesCount: 0}, ...state.profilePage.postsData]
+        }
+    }
+}

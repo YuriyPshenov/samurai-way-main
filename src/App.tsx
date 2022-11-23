@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Navbar/Dialogs/Dialogs";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
@@ -42,29 +42,28 @@ type StateType = {
 
 type StatePropsType = {
     state: StateType
+    addPost: (messagePost: string) => void
 }
 
 const App = (props: StatePropsType) => {
 
-    const {state} = props
+    const {state, addPost} = props
 
-    const ProfileWithProps = () => <Profile profilePageData={state.profilePage}/>
+    const ProfileWithProps = () => <Profile profilePageData={state.profilePage} addPost={addPost}/>
     const DialogsWithProps = () => <Dialogs messagesPageData={state.messagesPage}/>
 
     return (
-        <BrowserRouter>
-            <div className={'app-wrapper'}>
-                <Header/>
-                <Navbar/>
-                <div className={'app-wrapper-content'}>
-                    <Route path={'/profile'} render={ProfileWithProps}/>
-                    <Route path={'/dialogs'} render={DialogsWithProps}/>
-                    <Route path={'/news'} component={News}/>
-                    <Route path={'/music'} component={Music}/>
-                    <Route path={'/settings'} component={Settings}/>
-                </div>
+        <div className={'app-wrapper'}>
+            <Header/>
+            <Navbar/>
+            <div className={'app-wrapper-content'}>
+                <Route path={'/profile'} render={ProfileWithProps}/>
+                <Route path={'/dialogs'} render={DialogsWithProps}/>
+                <Route path={'/news'} component={News}/>
+                <Route path={'/music'} component={Music}/>
+                <Route path={'/settings'} component={Settings}/>
             </div>
-        </BrowserRouter>
+        </div>
     )
 }
 

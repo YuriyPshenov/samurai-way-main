@@ -2,9 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import state from "./Redux/state";
+import {state} from "./Redux/state";
+import {BrowserRouter} from "react-router-dom";
+import {addPost} from "./Redux/state";
+
 
 ReactDOM.render(
-    <App state={state}/>,
+    <BrowserRouter>
+        <App state={state} addPost={addPost}/>
+    </BrowserRouter>,
     document.getElementById('root')
 )
