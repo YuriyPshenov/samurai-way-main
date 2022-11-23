@@ -3,24 +3,22 @@ import './Dialogs.module.css';
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {MessagesPage} from "../../../Redux/state";
+import {StoreType} from "../../../Redux/state";
 
 
 type DialogsPropsType = {
-    messagesPageData: MessagesPage
+    store: StoreType
 }
 
-const Dialogs = (props: DialogsPropsType) => {
-
-    const {messagesPageData} = props
+const Dialogs: React.FC<DialogsPropsType> = ({store}) => {
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                {messagesPageData.dialogsData.map(d => <DialogItem key={d.id} name={d.name} id={d.id.toString()}/>)}
+                {store.getState().messagesPage.dialogsData.map(d => <DialogItem key={d.id} name={d.name} id={d.id.toString()}/>)}
             </div>
             <div className={s.messages}>
-                {messagesPageData.messagesData.map(m => <Message key={m.id} message={m.message} id={m.id.toString()}/>)}
+                {store.getState().messagesPage.messagesData.map(m => <Message key={m.id} message={m.message} id={m.id.toString()}/>)}
             </div>
         </div>
     )

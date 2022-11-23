@@ -8,21 +8,19 @@ import {Route} from "react-router-dom";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
-import {addPost, state, updateNewPostText} from "./Redux/state";
+import {StoreType} from "./Redux/state";
 
 
-// type AppPropsType = {
-//     state: StateType
-//     addPost: (postText: string) => void
-//     updateNewPostText: (updateText: string) => void
-// }
+type AppPropsType = {
+    store: StoreType
+}
 
-const App = () => {
+const App = (props: AppPropsType) => {
 
-    const {profilePage, messagesPage} = state
+    const {store} = props
 
-    const ProfileWithProps = () => <Profile profilePageData={profilePage} addPost={addPost} updateNewPostText={updateNewPostText}/>
-    const DialogsWithProps = () => <Dialogs messagesPageData={messagesPage}/>
+    const ProfileWithProps = () => <Profile store={store}/>
+    const DialogsWithProps = () => <Dialogs store={store}/>
 
     return (
         <div className={'app-wrapper'}>
