@@ -8,49 +8,21 @@ import {Route} from "react-router-dom";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
+import {addPost, state, updateNewPostText} from "./Redux/state";
 
 
-export type PostsDataType = {
-    id: string
-    message: string
-    likesCount: number
-}
+// type AppPropsType = {
+//     state: StateType
+//     addPost: (postText: string) => void
+//     updateNewPostText: (updateText: string) => void
+// }
 
-export type DialogsDataType = {
-    id: string
-    name: string
-}
+const App = () => {
 
-export type MessagesDataType = {
-    id: string
-    message: string
-}
+    const {profilePage, messagesPage} = state
 
-export type ProfilePageType = {
-    postsData: Array<PostsDataType>
-}
-
-export type MessagesPage = {
-    dialogsData: Array<DialogsDataType>
-    messagesData: Array<MessagesDataType>
-}
-
-type StateType = {
-    profilePage: ProfilePageType
-    messagesPage: MessagesPage
-}
-
-type StatePropsType = {
-    state: StateType
-    addPost: (messagePost: string) => void
-}
-
-const App = (props: StatePropsType) => {
-
-    const {state, addPost} = props
-
-    const ProfileWithProps = () => <Profile profilePageData={state.profilePage} addPost={addPost}/>
-    const DialogsWithProps = () => <Dialogs messagesPageData={state.messagesPage}/>
+    const ProfileWithProps = () => <Profile profilePageData={profilePage} addPost={addPost} updateNewPostText={updateNewPostText}/>
+    const DialogsWithProps = () => <Dialogs messagesPageData={messagesPage}/>
 
     return (
         <div className={'app-wrapper'}>

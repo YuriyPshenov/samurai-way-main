@@ -1,30 +1,32 @@
-import React, {MouseEvent, LegacyRef} from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {PostsDataType} from "../../../App";
+import {PostsDataType} from "../../../Redux/state";
+
 
 type MyPostsPropsType = {
     postsData: Array<PostsDataType>
-    addPost: (messagePost: string) => void
+    addPost: (postText: string) => void
+    newPostText: string
+    updateNewPostText: (updateText: string) => void
 }
 
-const MyPosts = (props: MyPostsPropsType) => {
+const MyPosts: React.FC<MyPostsPropsType> = ({postsData, addPost, updateNewPostText, newPostText}) => {
 
-    const {postsData, addPost} = props
 
-    const newPostElement: LegacyRef<HTMLTextAreaElement> = React.createRef()
+    const addPostOnClick = () => {
+        addPost(newPostText)
+    }
 
-    const addPostOnClick = (event: MouseEvent<HTMLButtonElement>) => {
-        debugger
-        let text = newPostElement.current?.value
-        return text ? addPost(text) : event.stopPropagation()
+    const onPostChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        updateNewPostText(event.currentTarget.value)
     }
 
 
     return (
         <div className={s.myPosts}>
             <div className={s.textAreaZone}>
-                <textarea ref={newPostElement}></textarea>
+                <textarea onChange={onPostChange} value={newPostText}></textarea>
                 <button onClick={addPostOnClick}>Add post</button>
             </div>
             <div>

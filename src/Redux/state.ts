@@ -1,4 +1,39 @@
-export let state = {
+import {rerenderEntireTree} from "../render";
+
+
+export type PostsDataType = {
+    id: string
+    message: string
+    likesCount: number
+}
+
+export type DialogsDataType = {
+    id: string
+    name: string
+}
+
+export type MessagesDataType = {
+    id: string
+    message: string
+}
+
+export type ProfilePageType = {
+    postsData: Array<PostsDataType>
+    newPostText: string
+}
+
+export type MessagesPage = {
+    dialogsData: Array<DialogsDataType>
+    messagesData: Array<MessagesDataType>
+}
+
+export type StateType = {
+    profilePage: ProfilePageType
+    messagesPage: MessagesPage
+}
+
+
+export let state: StateType = {
     profilePage: {
         postsData: [
             {id: '1', message: 'Hi, how are you?', likesCount: 6},
@@ -10,7 +45,8 @@ export let state = {
             {id: '7', message: 'my house', likesCount: 8},
             {id: '8', message: 'me', likesCount: 6},
             {id: '9', message: 'what is that', likesCount: 4},
-        ]
+        ],
+        newPostText: ''
     },
     messagesPage: {
         dialogsData: [
@@ -32,12 +68,21 @@ export let state = {
     }
 }
 
-export const addPost = (postMessage: string) => {
-    debugger
-    state = {...state,
-        profilePage: {
-            ...state.profilePage,
-            postsData: [{id: '10', message: postMessage, likesCount: 0}, ...state.profilePage.postsData]
-        }
+
+export const addPost = (postText: string) => {
+    const newPost: PostsDataType = {
+        id: (state.profilePage.postsData.length + 1).toString(),
+        message: postText,
+        likesCount: 0
     }
+
+    state.profilePage.postsData.unshift(newPost)
+
+    updateNewPostText('')
+    rerenderEntireTree(state)
+}
+
+export const updateNewPostText = (updateText: string) => {
+    state.profilePage.newPostText = updateText
+    rerenderEntireTree(state)
 }
