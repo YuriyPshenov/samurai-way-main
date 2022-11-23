@@ -41,7 +41,7 @@ export type StateType = {
 export type StoreType = {
     _state: StateType
     getState: () => StateType
-    rerenderEntireTree: (state: StateType) => void
+    _callSuscriber: (state: StateType) => void
     addPost: (postText: string) => void
     updateNewPostText: (updateTex: string) => void
     subscribe: (observer: (state: StateType) => void) => void
@@ -85,7 +85,7 @@ export const store: StoreType = {
     getState() {
         return this._state
     },
-    rerenderEntireTree (state: StateType) {
+    _callSuscriber (state: StateType) {
         console.log('state changed')
     },
     addPost(postText: string) {
@@ -98,14 +98,14 @@ export const store: StoreType = {
         this._state.profilePage.postsData.unshift(newPost)
 
         this.updateNewPostText('')
-        this.rerenderEntireTree(this._state)
+        this._callSuscriber(this._state)
     },
     updateNewPostText(updateText: string) {
         this._state.profilePage.newPostText = updateText
-        this.rerenderEntireTree(this._state)
+        this._callSuscriber(this._state)
     },
     subscribe (observer: (state: StateType) => void) {
-        this.rerenderEntireTree = observer
+        this._callSuscriber = observer
     }
 }
 
