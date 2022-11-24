@@ -1,8 +1,10 @@
 .dialogs {
     display: grid;
     grid-template-columns: minmax(100px, 20%) minmax(200px, 80%);
+    grid-template-rows: 1fr 50px;
     margin: 15px 15px 0 15px;
     height: 200px;
+    grid-template-areas: 'd m' 'd t';
 }
 
 .dialogsItems {
@@ -10,6 +12,7 @@
     background-color: lightslategray;
     box-shadow: 3px 0 8px 0 rgba(0, 0, 0, 0.4);
     z-index: 2;
+    grid-area: d;
 }
 
 .dialog a {
@@ -24,7 +27,27 @@
 }
 
 .messages {
-    padding: 10px 10px 0 10px;
+    padding: 10px 10px 10px 10px;
     background-color: aqua;
     z-index: 1;
+    grid-area: m;
 }
+
+.textAreaAddMessage {
+    display: flex;
+    grid-area: t;
+    justify-content: start;
+}
+
+.textAreaAddMessage textarea {
+    width: 100%;
+    height: 1fr;
+    resize: none;
+    outline: none;
+    border: 2px solid slateblue;
+}
+
+.textAreaAddMessage textarea:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+

@@ -1,7 +1,7 @@
-// let rerenderEntireTree = (state: StateType) => {
-//     console.log('State changed')
-// }
-
+const ADD_POST = 'ADD-POST';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 export type PostsDataType = {
     id: string
@@ -24,14 +24,15 @@ export type ProfilePageType = {
     newPostText: string
 }
 
-export type MessagesPage = {
+export type MessagesPageType = {
     dialogsData: Array<DialogsDataType>
     messagesData: Array<MessagesDataType>
+    newMessageText: string
 }
 
 export type StateType = {
     profilePage: ProfilePageType
-    messagesPage: MessagesPage
+    messagesPage: MessagesPageType
 }
 
 // type ObserverType = {
@@ -78,7 +79,8 @@ export const store: StoreType = {
                 {id: '4', message: 'whats your name'},
                 {id: '5', message: 'Hey'},
                 {id: '6', message: 'im here'}
-            ]
+            ],
+            newMessageText: ''
         }
     },
     getState() {
@@ -91,7 +93,7 @@ export const store: StoreType = {
         console.log('state changed')
     },
     dispatch(action) { // {type: 'ADD_POST'}
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             const newPost: PostsDataType = {
                 id: (this._state.profilePage.postsData.length + 1).toString(),
                 message: this._state.profilePage.newPostText,
@@ -100,14 +102,37 @@ export const store: StoreType = {
 
             this._state.profilePage.postsData.unshift(newPost)
 
-            this.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: ''})
+            this.dispatch({type: UPDATE_NEW_POST_TEXT, newText: ''})
             this._callSubscriber(this._state)
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText!
+            this._callSubscriber(this._state)
+
+        } else if (action.type === ADD_MESSAGE) {
+            const newMassage: MessagesDataType = {
+                id: (this._state.messagesPage.messagesData.length + 1).toString(),
+                message: this._state.messagesPage.newMessageText
+            }
+            this._state.messagesPage.messagesData.push(newMassage)
+            debugger
+            this.dispatch({type: UPDATE_NEW_MESSAGE_TEXT, newText: ''})
+            this._callSubscriber(this._state)
+
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+            debugger
+            this._state.messagesPage.newMessageText = action.newText!
             this._callSubscriber(this._state)
         }
     }
 }
+
+
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const updateNewPostTextActionCreator = (newText: string) => ({type: UPDATE_NEW_POST_TEXT, newText})
+
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
+export const updateNewMessageTextActionCreator = (newText: string) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText})
 
 
 // export let state: StateType = {

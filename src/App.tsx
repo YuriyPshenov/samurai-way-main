@@ -19,7 +19,7 @@ type AppPropsType = {
 const App: React.FC<AppPropsType>  = ({store, dispatch}) => {
 
     const ProfileWithProps = () => <Profile profilePage={store.getState().profilePage} dispatch={dispatch}/>
-    const DialogsWithProps = () => <Dialogs store={store}/>
+    const DialogsWithProps = () => <Dialogs messagesPage={store.getState().messagesPage} dispatch={dispatch}/>
 
     return (
         <div className={'app-wrapper'}>

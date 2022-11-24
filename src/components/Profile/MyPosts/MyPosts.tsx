@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {ProfilePageType} from "../../../Redux/state";
+import {addPostActionCreator, ProfilePageType, updateNewPostTextActionCreator} from "../../../Redux/state";
 
 
 type MyPostsPropsType = {
@@ -13,12 +13,11 @@ const MyPosts: React.FC<MyPostsPropsType> = ({profilePage, dispatch}) => {
 
 
     const addPostOnClick = () => {
-        dispatch({type: 'ADD-POST'})
+        dispatch(addPostActionCreator())
     }
 
     const onPostChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        const action = {type: 'UPDATE-NEW-POST-TEXT', newText: event.currentTarget.value};
-        dispatch(action)
+        dispatch(updateNewPostTextActionCreator(event.currentTarget.value))
     }
 
 
