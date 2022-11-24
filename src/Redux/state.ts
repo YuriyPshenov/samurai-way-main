@@ -115,12 +115,10 @@ export const store: StoreType = {
                 message: this._state.messagesPage.newMessageText
             }
             this._state.messagesPage.messagesData.push(newMassage)
-            debugger
             this.dispatch({type: UPDATE_NEW_MESSAGE_TEXT, newText: ''})
             this._callSubscriber(this._state)
 
         } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            debugger
             this._state.messagesPage.newMessageText = action.newText!
             this._callSubscriber(this._state)
         }

@@ -13,11 +13,11 @@ type DialogsPropsType = {
 
 const Dialogs: React.FC<DialogsPropsType> = ({messagesPage, dispatch}) => {
 
-    const changeTextareaMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const onTextareaMessageChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         dispatch(updateNewMessageTextActionCreator(event.currentTarget.value))
     }
 
-    const addMessage = () => {
+    const onAddMessageClick = () => {
         dispatch(addMessageActionCreator())
     }
 
@@ -30,8 +30,8 @@ const Dialogs: React.FC<DialogsPropsType> = ({messagesPage, dispatch}) => {
                 {messagesPage.messagesData.map(m => <Message key={m.id} message={m.message} id={m.id.toString()}/>)}
             </div>
             <div className={s.textAreaAddMessage}>
-                <textarea onChange={changeTextareaMessage} value={messagesPage.newMessageText}></textarea>
-                <button onClick={addMessage}>Send</button>
+                <textarea onChange={onTextareaMessageChange} value={messagesPage.newMessageText}></textarea>
+                <button onClick={onAddMessageClick}>Send</button>
             </div>
         </div>
     )
