@@ -1,19 +1,19 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {addPostActionCreator, ProfilePageType, updateNewPostTextActionCreator} from "../../../Redux/state";
+import {ActionsTypes, addPostActionCreator, ProfilePageType, updateNewPostTextActionCreator} from "../../../Redux/state";
 
 
 type MyPostsPropsType = {
     profilePage: ProfilePageType
-    dispatch: (action: {type: string, newText?: string}) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 const MyPosts: React.FC<MyPostsPropsType> = ({profilePage, dispatch}) => {
 
 
     const addPostOnClick = () => {
-        dispatch(addPostActionCreator())
+        dispatch(addPostActionCreator(profilePage.newPostText))
     }
 
     const onPostChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
