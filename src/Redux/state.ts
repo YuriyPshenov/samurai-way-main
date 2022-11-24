@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import profileReducer, {ActionsProfileReducerTypes} from "./reducers/profileReducer";
+import dialogsReducer, {ActionsDialogsReducerTypes} from "./reducers/dialogsReducer";
+
 
 export type PostsDataType = {
     id: string
@@ -36,15 +35,7 @@ export type StateType = {
 }
 
 
-type AddPostActionType = ReturnType<typeof addPostActionCreator>
-
-type UpdateNewPostTextType = ReturnType<typeof updateNewPostTextActionCreator>
-
-type AddMessageType = ReturnType<typeof addMessageActionCreator>
-
-type UpdateNewMessageTypeText = ReturnType<typeof updateNewMessageTextActionCreator>
-
-export type ActionsTypes = AddPostActionType | UpdateNewPostTextType | AddMessageType | UpdateNewMessageTypeText
+export type ActionsTypes = ActionsProfileReducerTypes | ActionsDialogsReducerTypes
 
 export type StoreType = {
     _state: StateType
@@ -100,41 +91,9 @@ export const store: StoreType = {
         console.log('state changed')
     },
     dispatch(action) { // {type: 'ADD_POST'}
-        if (action.type === ADD_POST) {
-            const newPost: PostsDataType = {
-                id: (this._state.profilePage.postsData.length + 1).toString(),
-                message: action.newText,
-                likesCount: 0
-            }
 
-            this._state.profilePage.postsData.unshift(newPost)
-
-            this.dispatch({type: UPDATE_NEW_POST_TEXT, newText: ''})
-            this._callSubscriber(this._state)
-
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText
-            this._callSubscriber(this._state)
-
-        } else if (action.type === ADD_MESSAGE) {
-            const newMassage: MessagesDataType = {
-                id: (this._state.messagesPage.messagesData.length + 1).toString(),
-                message: action.newText
-            }
-            this._state.messagesPage.messagesData.push(newMassage)
-            this.dispatch({type: UPDATE_NEW_MESSAGE_TEXT, newText: ''})
-            this._callSubscriber(this._state)
-
-        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.messagesPage.newMessageText = action.newText
-            this._callSubscriber(this._state)
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messagesPage = dialogsReducer(this._state.messagesPage, action)
+        this._callSubscriber(this._state)
     }
 }
-
-
-export const addPostActionCreator = (newText: string) => ({type: ADD_POST, newText})
-export const updateNewPostTextActionCreator = (newText: string) => ({type: UPDATE_NEW_POST_TEXT, newText})
-
-export const addMessageActionCreator = (newText: string) => ({type: ADD_MESSAGE, newText})
-export const updateNewMessageTextActionCreator = (newText: string) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText})

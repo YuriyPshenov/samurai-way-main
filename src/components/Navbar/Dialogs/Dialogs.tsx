@@ -5,10 +5,9 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {
     ActionsTypes,
-    addMessageActionCreator,
     MessagesPageType,
-    updateNewMessageTextActionCreator
 } from "../../../Redux/state";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/reducers/dialogsReducer";
 
 
 type DialogsPropsType = {
