@@ -41,10 +41,9 @@ export type StateType = {
 export type StoreType = {
     _state: StateType
     getState: () => StateType
-    _callSuscriber: (state: StateType) => void
-    addPost: (postText: string) => void
-    updateNewPostText: (updateTex: string) => void
+    _callSubscriber: (state: StateType) => void
     subscribe: (observer: (state: StateType) => void) => void
+    dispatch: (action: {type: string, newText?: string}) => void
 }
 
 export const store: StoreType = {
@@ -85,27 +84,28 @@ export const store: StoreType = {
     getState() {
         return this._state
     },
-    _callSuscriber (state: StateType) {
+    subscribe (observer: (state: StateType) => void) {
+        this._callSubscriber = observer
+    },
+    _callSubscriber (state: StateType) {
         console.log('state changed')
     },
-    addPost(postText: string) {
-        const newPost: PostsDataType = {
-            id: (this._state.profilePage.postsData.length + 1).toString(),
-            message: postText,
-            likesCount: 0
+    dispatch(action) { // {type: 'ADD_POST'}
+        if (action.type === 'ADD-POST') {
+            const newPost: PostsDataType = {
+                id: (this._state.profilePage.postsData.length + 1).toString(),
+                message: this._state.profilePage.newPostText,
+                likesCount: 0
+            }
+
+            this._state.profilePage.postsData.unshift(newPost)
+
+            this.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: ''})
+            this._callSubscriber(this._state)
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText!
+            this._callSubscriber(this._state)
         }
-
-        this._state.profilePage.postsData.unshift(newPost)
-
-        this.updateNewPostText('')
-        this._callSuscriber(this._state)
-    },
-    updateNewPostText(updateText: string) {
-        this._state.profilePage.newPostText = updateText
-        this._callSuscriber(this._state)
-    },
-    subscribe (observer: (state: StateType) => void) {
-        this._callSuscriber = observer
     }
 }
 

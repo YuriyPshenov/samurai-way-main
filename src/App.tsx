@@ -13,13 +13,12 @@ import {StoreType} from "./Redux/state";
 
 type AppPropsType = {
     store: StoreType
+    dispatch: (action: {type: string, newText?: string}) => void
 }
 
-const App = (props: AppPropsType) => {
+const App: React.FC<AppPropsType>  = ({store, dispatch}) => {
 
-    const {store} = props
-
-    const ProfileWithProps = () => <Profile store={store}/>
+    const ProfileWithProps = () => <Profile profilePage={store.getState().profilePage} dispatch={dispatch}/>
     const DialogsWithProps = () => <Dialogs store={store}/>
 
     return (
