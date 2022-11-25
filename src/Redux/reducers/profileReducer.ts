@@ -23,7 +23,7 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsPr
         case ADD_POST: {
             const newPost: PostsDataType = {
                 id: (state.postsData.length + 1).toString(),
-                message: action.newText,
+                message: state.newPostText,
                 likesCount: 0
             }
             state.postsData.unshift(newPost)
@@ -40,12 +40,12 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsPr
     }
 }
 
-export type ActionsProfileReducerTypes = AddPostActionType | UpdateNewPostTextType
+export type ActionsProfileReducerTypes = UpdateNewPostTextType | AddPostActionType
 
 type AddPostActionType = ReturnType<typeof addPostActionCreator>
 type UpdateNewPostTextType = ReturnType<typeof updateNewPostTextActionCreator>
 
-export const addPostActionCreator = (newText: string) => ({type: ADD_POST, newText})
-export const updateNewPostTextActionCreator = (newText: string) => ({type: UPDATE_NEW_POST_TEXT, newText})
+export const addPostActionCreator = () => ({type: ADD_POST}) as const
+export const updateNewPostTextActionCreator = (newText: string) => ({type: UPDATE_NEW_POST_TEXT, newText: newText}) as const
 
 export default profileReducer;

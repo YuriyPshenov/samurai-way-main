@@ -1,35 +1,36 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {ActionsTypes, ProfilePageType} from "../../../Redux/store";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/reducers/profileReducer";
+import {PostsDataType} from "../../../Redux/store";
 
 
 type MyPostsPropsType = {
-    profilePage: ProfilePageType
-    dispatch: (action: ActionsTypes) => void
+    postsData: PostsDataType[]
+    addPost: () => void
+    updateNewPostText: (value: string) => void
+    newPostText: string
 }
 
-const MyPosts: React.FC<MyPostsPropsType> = ({profilePage, dispatch}) => {
+const MyPosts: React.FC<MyPostsPropsType> = ({postsData, addPost, updateNewPostText, newPostText}) => {
 
 
     const addPostOnClick = () => {
-        dispatch(addPostActionCreator(profilePage.newPostText))
+        addPost()
     }
 
-    const onPostChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        dispatch(updateNewPostTextActionCreator(event.currentTarget.value))
+    const postOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        updateNewPostText(event.currentTarget.value)
     }
 
 
     return (
         <div className={s.myPosts}>
             <div className={s.textAreaZone}>
-                <textarea onChange={onPostChange} value={profilePage.newPostText}></textarea>
+                <textarea onChange={postOnChange} value={newPostText}></textarea>
                 <button onClick={addPostOnClick}>Add post</button>
             </div>
             <div>
-                {profilePage.postsData.map(p => <Post key={p.id} id={p.id.toString()} message={p.message} likesCount={p.likesCount}/>)}
+                {postsData.map(p => <Post key={p.id} id={p.id.toString()} message={p.message} likesCount={p.likesCount}/>)}
             </div>
         </div>
     )

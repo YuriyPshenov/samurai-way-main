@@ -37,13 +37,13 @@ export type StateType = {
 
 export type ActionsTypes = ActionsProfileReducerTypes | ActionsDialogsReducerTypes
 
-export type StoreType = {
-    _state: StateType
-    getState: () => StateType
-    _callSubscriber: (state: StateType) => void
-    subscribe: (observer: (state: StateType) => void) => void
-    dispatch: (action: ActionsTypes) => void
-}
+// export type StoreType = {
+//     _state: StateType
+//     getState: () => StateType
+//     _callSubscriber: (state: StateType) => void
+//     subscribe: (observer: (state: StateType) => void) => void
+//     dispatch: (action: ActionsTypes) => void
+// }
 
 // export const store: StoreType = {
 //     _state: {
