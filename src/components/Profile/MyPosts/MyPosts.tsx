@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {ActionsTypes, ProfilePageType} from "../../../Redux/state";
+import {ActionsTypes, ProfilePageType} from "../../../Redux/store";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/reducers/profileReducer";
 
 

@@ -8,18 +8,20 @@ import {Route} from "react-router-dom";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
-import {ActionsTypes, StoreType} from "./Redux/state";
+import {ActionsTypes, StateType} from "./Redux/store";
+import {StoreType} from "./Redux/redux-store";
 
 
 type AppPropsType = {
-    store: StoreType
+    state: StateType
     dispatch: (action: ActionsTypes) => void
+    store: StoreType
 }
 
-const App: React.FC<AppPropsType>  = ({store, dispatch}) => {
+const App: React.FC<AppPropsType>  = ({state, dispatch, store}) => {
 
-    const ProfileWithProps = () => <Profile profilePage={store.getState().profilePage} dispatch={dispatch.bind(store)}/>
-    const DialogsWithProps = () => <Dialogs messagesPage={store.getState().messagesPage} dispatch={dispatch.bind(store)}/>
+    const ProfileWithProps = () => <Profile profilePage={state.profilePage} dispatch={dispatch.bind(store)}/>
+    const DialogsWithProps = () => <Dialogs messagesPage={state.messagesPage} dispatch={dispatch.bind(store)}/>
 
     return (
         <div className={'app-wrapper'}>
