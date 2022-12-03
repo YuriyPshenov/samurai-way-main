@@ -7,21 +7,20 @@ import {Route} from "react-router-dom";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
-import {ActionsTypes, StateType} from "./Redux/store";
-import {StoreType} from "./Redux/redux-store";
+
 import DialogsContainer from "./components/Navbar/Dialogs/DialogsContainer";
 
 
 type AppPropsType = {
-    state: StateType
-    dispatch: (action: ActionsTypes) => void
-    store: StoreType
+    // state: StateType
+    // dispatch: (action: ActionsTypes) => void
+    // store: StoreType
 }
 
-const App: React.FC<AppPropsType>  = ({store}) => {
+const App: React.FC<AppPropsType>  = () => {
 
-    const ProfileWithProps = () => <Profile store={store}/>
-    const DialogsWithProps = () => <DialogsContainer store={store}/>
+    const ProfileWithProps = () => <Profile />
+    const DialogsWithProps = () => <DialogsContainer />
 
     return (
         <div className={'app-wrapper'}>

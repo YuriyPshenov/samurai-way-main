@@ -8,6 +8,7 @@ const reducers = combineReducers({
     messagesPage: dialogsReducer
 })
 
+
 export type StoreType = {
     _state: StateType
     getState: () => StateType
@@ -15,6 +16,7 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-const store: StoreType = createStore(reducers)
+const store = createStore(reducers)
+
 
 export default store
