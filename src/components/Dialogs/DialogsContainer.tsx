@@ -1,9 +1,9 @@
 import React from 'react';
 import './Dialogs.module.css';
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/reducers/dialogsReducer";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../Redux/reducers/dialogsReducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-import {ActionsTypes, StateType} from "../../../Redux/store";
+import {ActionsTypes, StateType} from "../../Redux/store";
 
 
 

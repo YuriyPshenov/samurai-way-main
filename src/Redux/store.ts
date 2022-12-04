@@ -1,6 +1,25 @@
 import {ActionsProfileReducerTypes} from "./reducers/profileReducer";
 import {ActionsDialogsReducerTypes} from "./reducers/dialogsReducer";
+import {ActionsUsersReducerTypes} from "./reducers/users-reducer";
 
+type AddressType = {
+    country: string
+    city: string
+}
+
+export type UsersDataType = {
+    id: string
+    photoUrl: string
+    followed: boolean
+    firstName: string
+    lastName: string
+    status: string
+    address: AddressType
+}
+
+export type UsersType = {
+    usersData: UsersDataType[]
+}
 
 export type PostsDataType = {
     id: string
@@ -32,10 +51,11 @@ export type MessagesPageType = {
 export type StateType = {
     profilePage: ProfilePageType
     messagesPage: MessagesPageType
+    usersPage: UsersType
 }
 
 
-export type ActionsTypes = ActionsProfileReducerTypes | ActionsDialogsReducerTypes
+export type ActionsTypes = ActionsProfileReducerTypes | ActionsDialogsReducerTypes | ActionsUsersReducerTypes
 
 // export type StoreType = {
 //     _state: StateType

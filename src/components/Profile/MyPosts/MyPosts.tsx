@@ -22,6 +22,8 @@ const MyPosts: React.FC<MyPostsPropsType> = ({postsData, addPost, updateNewPostT
         updateNewPostText(event.currentTarget.value)
     }
 
+    const postsDataElements = postsData.map(p => <Post key={p.id} id={p.id.toString()} message={p.message} likesCount={p.likesCount}/>)
+
 
     return (
         <div className={s.myPosts}>
@@ -30,7 +32,7 @@ const MyPosts: React.FC<MyPostsPropsType> = ({postsData, addPost, updateNewPostT
                 <button onClick={addPostOnClick}>Add post</button>
             </div>
             <div>
-                {postsData.map(p => <Post key={p.id} id={p.id.toString()} message={p.message} likesCount={p.likesCount}/>)}
+                {postsDataElements}
             </div>
         </div>
     )
