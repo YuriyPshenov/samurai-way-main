@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './Users.module.css'
 import {UsersDataType} from "../../Redux/store";
+import axios from "axios";
+import img from "../../assets/images/img.png"
 
 type UsersPropsType = {
     usersData: UsersDataType[]
@@ -17,24 +19,23 @@ const Users: React.FC<UsersPropsType> = (
         setUser
     }) => {
 
-    !usersData.length && setUser([
-        {id: '1', photoUrl: 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png', followed: false, firstName: 'Dmitry', lastName: 'K', status: 'I am a boss', address: {country: 'Belarus', city: 'Minsk'}},
-        {id: '2', photoUrl: 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png', followed: false, firstName: 'Svetlana', lastName: 'D', status: 'I am a boss too', address: {country: 'Russia', city: 'Moscow'}},
-        {id: '3', photoUrl: 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png', followed: false, firstName: 'Sergei', lastName: 'S', status: 'I am a boss too', address: {country: 'Ukraine', city: 'Kiev'}},
-        {id: '4', photoUrl: 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png', followed: false, firstName: 'Ekaterina', lastName: 'K', status: 'I am a boss too', address: {country: 'Belarus', city: 'Minsk'}},
-        {id: '5', photoUrl: 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png', followed: false, firstName: 'Dmitry', lastName: 'K', status: 'I am a boss', address: {country: 'Belarus', city: 'Minsk'}},
-        {id: '6', photoUrl: 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png', followed: false, firstName: 'Dmitry', lastName: 'K', status: 'I am a boss', address: {country: 'Belarus', city: 'Minsk'}},
-        {id: '7', photoUrl: 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png', followed: false, firstName: 'Dmitry', lastName: 'K', status: 'I am a boss', address: {country: 'Belarus', city: 'Minsk'}},
-        {id: '8', photoUrl: 'https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png', followed: false, firstName: 'Dmitry', lastName: 'K', status: 'I am a boss', address: {country: 'Belarus', city: 'Minsk'}},
-    ])
+    let getUsers = () => {
+        if (usersData.length === 0) {
+
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+                setUser(response.data.items)
+            })
+        }
+    }
 
     return (
         <div className={s.usersContainer}>
+            <button onClick={getUsers}>Get Users</button>
             {
                 usersData.map(u => <div key={u.id} className={s.users}>
                     <div className={s.usersAvatar}>
                         <div>
-                            <img src={u.photoUrl} alt="user's avatar"/>
+                            <img src={u.photos.small != null ? u.photos.small : img} alt="user's avatar"/>
                         </div>
                         <div>
                             {u.followed ? <button onClick={() => unfollow(u.id)}>Unfollow</button> : <button onClick={() => follow(u.id)}>Follow</button>}
@@ -42,12 +43,12 @@ const Users: React.FC<UsersPropsType> = (
                     </div>
                     <span className={s.userInfo}>
                         <div className={s.userNameStatus}>
-                            <div>{`${u.firstName} ${u.lastName}`}</div>
+                            <div>{u.name}</div>
                             <div>{u.status}</div>
                         </div>
                         <div>
-                            <div>{u.address.country}, </div>
-                            <div>{u.address.city}</div>
+                            <div>{'u.address.country'}, </div>
+                            <div>{'u.address.city'}</div>
                         </div>
                     </span>
                 </div>)

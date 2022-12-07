@@ -11,8 +11,9 @@ export type UsersDataType = {
     id: string
     photoUrl: string
     followed: boolean
-    firstName: string
-    lastName: string
+    uniqueUrlName: string
+    photos: {small: string, large: string}
+    name: string
     status: string
     address: AddressType
 }
