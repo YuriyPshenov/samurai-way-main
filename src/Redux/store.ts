@@ -20,6 +20,9 @@ export type UsersDataType = {
 
 export type UsersType = {
     usersData: UsersDataType[]
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 
 export type PostsDataType = {

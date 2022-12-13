@@ -27,7 +27,7 @@
 .userInfo {
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 1fr 10%;
+    grid-template-columns: 50% 50%;
 }
 
 .userNameStatus {
@@ -46,4 +46,14 @@
     background-color: darkcyan;
     padding: 5px;
     border-radius: 10px;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
+
+.pageSize {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
 }

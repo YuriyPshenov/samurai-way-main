@@ -1,36 +1,50 @@
-import React from 'react';
-import s from './Users.module.css'
+import React, {FC} from 'react';
+import s from "./Users.module.css";
+import {v1} from "uuid";
+import img from "../../assets/images/img.png";
 import {UsersDataType} from "../../Redux/store";
-import axios from "axios";
-import img from "../../assets/images/img.png"
 
 type UsersPropsType = {
+    onPageChanged: (newCurrentPage: number) => void
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
     usersData: UsersDataType[]
     follow: (userId: string) => void
     unfollow: (userId: string) => void
-    setUser: (users: UsersDataType[]) => void
 }
 
-const Users: React.FC<UsersPropsType> = (
+const Users: FC<UsersPropsType> = (
     {
+        onPageChanged,
+        totalUsersCount,
+        pageSize,
+        currentPage,
         usersData,
         unfollow,
-        follow,
-        setUser
-    }) => {
+        follow
+    }
+) => {
 
-    let getUsers = () => {
-        if (usersData.length === 0) {
+    let pagesCount = Math.ceil(totalUsersCount / pageSize)
 
-            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-                setUser(response.data.items)
-            })
-        }
+    let pages = []
+
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
     }
 
     return (
         <div className={s.usersContainer}>
-            <button onClick={getUsers}>Get Users</button>
+            <div className={s.pageSize}>
+                {pages.map((p) =>
+                    <span key={v1()}
+                          onClick={() => onPageChanged(p)}
+                          className={currentPage === p ? s.selectedPage : ''}>
+                    {p}
+                    </span>
+                )}
+            </div>
             {
                 usersData.map(u => <div key={u.id} className={s.users}>
                     <div className={s.usersAvatar}>
@@ -38,7 +52,8 @@ const Users: React.FC<UsersPropsType> = (
                             <img src={u.photos.small != null ? u.photos.small : img} alt="user's avatar"/>
                         </div>
                         <div>
-                            {u.followed ? <button onClick={() => unfollow(u.id)}>Unfollow</button> : <button onClick={() => follow(u.id)}>Follow</button>}
+                            {u.followed ? <button onClick={() => unfollow(u.id)}>Unfollow</button> :
+                                <button onClick={() => follow(u.id)}>Follow</button>}
                         </div>
                     </div>
                     <span className={s.userInfo}>
