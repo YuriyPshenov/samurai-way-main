@@ -37,18 +37,18 @@ export const dialogsReducer = (state: UsersType = initialState, action: ActionsU
 export type ActionsUsersReducerTypes = FollowACType | unfollowACType | setUsersACType | ChangeCurrentPageACType
 | SetUsersTotalCountACType | ToggleIsFetchingACType
 
-type FollowACType = ReturnType<typeof followAC>
-type unfollowACType = ReturnType<typeof unfollowAC>
-type setUsersACType = ReturnType<typeof setUsersAC>
-type ChangeCurrentPageACType = ReturnType<typeof changeCurrentPageAC>
-type SetUsersTotalCountACType = ReturnType<typeof setUsersTotalCountAC>
-type ToggleIsFetchingACType = ReturnType<typeof toggleIsFetchingAC>
+type FollowACType = ReturnType<typeof follow>
+type unfollowACType = ReturnType<typeof unfollow>
+type setUsersACType = ReturnType<typeof setUsers>
+type ChangeCurrentPageACType = ReturnType<typeof changeCurrentPage>
+type SetUsersTotalCountACType = ReturnType<typeof setUsersTotalCount>
+type ToggleIsFetchingACType = ReturnType<typeof toggleIsFetching>
 
-export const followAC = (userId: string) => ({type: FOLLOW, userId}) as const
-export const unfollowAC = (userId: string) => ({type: UNFOLLOW, userId}) as const
-export const setUsersAC = (users: UsersDataType[]) => ({type: SET_USERS, users}) as const
-export const changeCurrentPageAC = (newCurrentPage: number) => ({type: CHANGE_CURRENT_PAGE, newCurrentPage}) as const
-export const setUsersTotalCountAC = (totalCount: number) => ({type: SET_USERS_TOTAL_COUNT, totalCount}) as const
-export const toggleIsFetchingAC = (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, isFetching}) as const
+export const follow = (userId: string) => ({type: FOLLOW, userId}) as const
+export const unfollow = (userId: string) => ({type: UNFOLLOW, userId}) as const
+export const setUsers = (users: UsersDataType[]) => ({type: SET_USERS, users}) as const
+export const changeCurrentPage = (newCurrentPage: number) => ({type: CHANGE_CURRENT_PAGE, newCurrentPage}) as const
+export const setUsersTotalCount = (totalCount: number) => ({type: SET_USERS_TOTAL_COUNT, totalCount}) as const
+export const toggleIsFetching = (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, isFetching}) as const
 
 export default dialogsReducer;
