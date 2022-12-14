@@ -18,7 +18,7 @@ const ProfileInfo: FC<ProfileInfoPropsType> = (
     return (
         <>
             <div className={s.mainImgForContent}>
-                <img src={profile.photos.large}
+                <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fHRva3lvJTIwbmlnaHR8ZW58MHx8MHx8&w=1000&q=80"
                      alt="img content"/>
             </div>
             <div className={s.usersAvatarDescription}>

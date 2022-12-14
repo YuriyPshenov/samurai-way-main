@@ -5,6 +5,7 @@ import {PostsDataType, ProfilePageType, ProfileType, StateType} from "../../Redu
 import {addPostAC, setUserProfileAC, updateNewPostTextAC} from "../../Redux/reducers/profileReducer";
 import Profile from "./Profile";
 import axios from "axios";
+import {RouteComponentProps, withRouter} from "react-router-dom";
 
 type ProfileContainerPropsType = {
     postsData: PostsDataType[]
@@ -15,11 +16,18 @@ type ProfileContainerPropsType = {
     profile: ProfileType | null
 }
 
-class ProfileContainer extends React.Component<ProfileContainerPropsType, {}>{
+type pathParamsType = {
+    userId: string
+}
+
+type PropsType = RouteComponentProps<pathParamsType> & ProfileContainerPropsType
+
+class ProfileContainer extends React.Component<PropsType, {}>{
 
     componentDidMount() {
+        let userId = this.props.match.params.userId ? this.props.match.params.userId : 2
         axios.get(
-            `https://social-network.samuraijs.com/api/1.0//profile/2`
+            `https://social-network.samuraijs.com/api/1.0//profile/` + userId
         ).then(response => {
             this.props.setUserProfileAC(response.data)
             }
@@ -41,4 +49,6 @@ const mapStateToProps = (state: StateType): ProfilePageType => {
     }
 }
 
-export default connect(mapStateToProps, {addPostAC, updateNewPostTextAC, setUserProfileAC})(ProfileContainer);
+let WithUrlDataContainerComponent  = withRouter(ProfileContainer)
+
+export default connect(mapStateToProps, {addPostAC, updateNewPostTextAC, setUserProfileAC})(WithUrlDataContainerComponent);
