@@ -1,6 +1,7 @@
-import {ProfilePageType} from "../store";
+import {ProfilePageType, ProfileType} from "../store";
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 
 const initialState = {
@@ -15,7 +16,8 @@ const initialState = {
         {id: '8', message: 'me', likesCount: 6},
         {id: '9', message: 'what is that', likesCount: 4},
     ],
-    newPostText: ''
+    newPostText: '',
+    profile: null
 }
 
 const profileReducer = (state: ProfilePageType = initialState, action: ActionsProfileReducerTypes) => {
@@ -24,17 +26,22 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsPr
             return {...state, postsData: [{id: (state.postsData.length + 1).toString(), message: state.newPostText, likesCount: 0}, ...state.postsData], newPostText: ''}
         case UPDATE_NEW_POST_TEXT:
             return {...state, newPostText: action.newText}
+        case SET_USER_PROFILE:
+            return {...state, profile: action.profile}
         default:
             return state
     }
 }
 
-export type ActionsProfileReducerTypes = UpdateNewPostTextType | AddPostActionType
+export type ActionsProfileReducerTypes = UpdateNewPostTextACType | AddPostActionACType | setUserProfileACType
 
-type AddPostActionType = ReturnType<typeof addPostActionCreator>
-type UpdateNewPostTextType = ReturnType<typeof updateNewPostTextActionCreator>
+type AddPostActionACType = ReturnType<typeof addPostAC>
+type UpdateNewPostTextACType = ReturnType<typeof updateNewPostTextAC>
+type setUserProfileACType = ReturnType<typeof setUserProfileAC>
 
-export const addPostActionCreator = () => ({type: ADD_POST}) as const
-export const updateNewPostTextActionCreator = (newText: string) => ({type: UPDATE_NEW_POST_TEXT, newText: newText}) as const
+export const addPostAC = () => ({type: ADD_POST}) as const
+export const updateNewPostTextAC = (newText: string) => ({type: UPDATE_NEW_POST_TEXT, newText: newText}) as const
+export const setUserProfileAC = (profile: ProfileType | null) => ({type: SET_USER_PROFILE, profile}) as const
+
 
 export default profileReducer;

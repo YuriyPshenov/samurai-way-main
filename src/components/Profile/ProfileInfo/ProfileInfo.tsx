@@ -1,20 +1,33 @@
-import React from 'react';
+import React, {FC} from 'react';
 import s from './ProfileInfo.module.css'
+import {ProfileType} from "../../../Redux/store";
+import Preloader from "../../common/preloader/Preloader";
 
-const ProfileInfo = () => {
+type ProfileInfoPropsType = {
+    profile: ProfileType | null
+}
+
+const ProfileInfo: FC<ProfileInfoPropsType> = (
+    {
+        profile
+    }
+    ) => {
+    if(!profile) {
+        return <Preloader/>
+    }
     return (
         <>
             <div className={s.mainImgForContent}>
-                <img src="https://static-cse.canva.com/blob/560385/benjaminhung340384unsplash.jpg"
+                <img src={profile.photos.large}
                      alt="img content"/>
             </div>
             <div className={s.usersAvatarDescription}>
                 <img
-                    src="https://sun9-2.userapi.com/impg/mkL7m7-1vMYa_A9jH9p5pXdoTYhTq7CkyUlgBA/mh8-ZHpr1g0.jpg?size=1024x1024&quality=96&sign=0b38ecc2f08ba6bc4fa0715c5a085a7c&type=album"
+                    src={profile.photos.small}
                     alt="user's avatar"/>
                 <div className={s.userInfo}>
-                    <span>Name</span>
-                    <span>Description</span>
+                    <span>{profile.fullName}</span>
+                    <span>About me: {profile.aboutMe}</span>
                 </div>
             </div>
         </>

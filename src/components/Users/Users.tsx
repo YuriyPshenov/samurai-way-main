@@ -3,6 +3,7 @@ import s from "./Users.module.css";
 import {v1} from "uuid";
 import img from "../../assets/images/img.png";
 import {UsersDataType} from "../../Redux/store";
+import {NavLink} from "react-router-dom";
 
 type UsersPropsType = {
     onPageChanged: (newCurrentPage: number) => void
@@ -49,7 +50,9 @@ const Users: FC<UsersPropsType> = (
                 usersData.map(u => <div key={u.id} className={s.users}>
                     <div className={s.usersAvatar}>
                         <div>
-                            <img src={u.photos.small != null ? u.photos.small : img} alt="user's avatar"/>
+                            <NavLink to={'/profile/' + u.id}>
+                                <img src={u.photos.small != null ? u.photos.small : img} alt="user's avatar"/>
+                            </NavLink>
                         </div>
                         <div>
                             {u.followed ? <button onClick={() => unfollow(u.id)}>Unfollow</button> :
