@@ -1,22 +1,23 @@
 import React from 'react';
+import s from './Profile.module.css';
 
 const Profile = () => {
     return (
-        <div className="content">
+        <div className={s.content}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Unknown_road_at_night%2C_Japan%3B_March_2013.jpg" alt="maincontentimage"/>
             <div>
                 ava + description
             </div>
-            <div className="posts-container">
+            <div className={s.postsContainer}>
                 My posts
-                <div className="new-post">
+                <div className={s.newPost}>
                     New post
                 </div>
-                <div className="posts">
-                    <div>
+                <div className={s.posts}>
+                    <div className={s.item}>
                         post 1
                     </div>
-                    <div>
+                    <div className={s.item}>
                         post 2
                     </div>
                 </div>
