@@ -1,0 +1,15 @@
+.postsContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.newPost {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+}
+
+.posts {
+
+}

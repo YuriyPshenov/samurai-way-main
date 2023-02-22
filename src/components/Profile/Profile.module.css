@@ -11,19 +11,15 @@
     height: 200px;
 }
 
-.postsContainer {
+.avatarDescription {
     display: flex;
-    flex-direction: column;
-    padding: 5px;
+    padding: 10px 5px 5px 5px;
+    align-items: center;
 }
 
-.newPost {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.posts {
-
+.avatarDescription img {
+    width: 100px;
+    height: 100px;
 }
 
 .item {
