@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-back {
+    background-color: silver;
+    margin-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+    display: flex;
+    width: 60%;
+    height: 50px;
+    align-items: center;
+    margin: 0 auto;
+    background-color: darkgray;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.header img {
+    padding-left: 10px;
+    width: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.page-layout {
+    width: 60%;
+    height: 100vh;
+    display: flex;
+    margin: 0 auto;
+    background-color: whitesmoke;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navigation {
+    width: 20%;
+    height: 100%;
+    padding: 10px;
+    background-color: slategray;
+}
+
+.content {
+    width: 80%;
+    height: 100%;
+    margin-left: 10px;
+    text-align: center;
+    background-color: royalblue;
+}
+
+.content img {
+    width: 100%;
+    height: 200px;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.new-post {
+    display: flex;
+    justify-content: flex-start;
 }
