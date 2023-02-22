@@ -1,8 +1,12 @@
 import React from 'react';
 import s from "./Post.module.css";
 
+type PostPropsType = {
+    message: string
+    likes: number
+}
 
-const Post = () => {
+const Post = (props: PostPropsType) => {
     return (
         <div className={s.post}>
             <div className={s.postAvatarName}>
@@ -10,10 +14,10 @@ const Post = () => {
                 User Name
             </div>
             <div className={s.postContent}>
-                Hello. it's my first post
+                {props.message}
             </div>
             <div className={s.postLikeButton}>
-                12
+                {props.likes}
                 <button>like</button>
             </div>
         </div>
