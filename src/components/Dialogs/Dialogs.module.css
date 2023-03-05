@@ -8,8 +8,31 @@
 
 .dialogs {
     width: 30%;
+    padding: 10px;
+    text-align: start;
 }
+
+.dialogs .active {
+    color: hotpink;
+}
+
+.dialog {
+    color: honeydew;
+}
+
 
 .messages {
     width: 70%;
+    padding: 10px;
+    text-align: start;
+}
+
+.message {
+    border-radius: 5px;
+    background-color: honeydew;
+    margin-bottom: 10px;
+}
+
+.message div {
+    padding: 5px;
 }

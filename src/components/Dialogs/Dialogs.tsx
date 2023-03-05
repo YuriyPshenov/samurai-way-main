@@ -6,14 +6,22 @@ export const Dialogs = () => {
     return (
         <div className={s.dialogsContainer}>
             <div className={s.dialogs}>
-                <div>Billy Harrington</div>
-                <div>Tommy Magwayer</div>
-                <div>Chad Chedov</div>
+                <h3>Dialogs</h3>
+                <div className={s.dialog + ' ' + s.active}>Billy Harrington</div>
+                <div className={s.dialog}>Tommy Magwayer</div>
+                <div className={s.dialog}>Chad Chedov</div>
             </div>
             <div className={s.messages}>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
+                <h3>Messages</h3>
+                <div className={s.message}>
+                    <div>Lorem Impsum</div>
+                </div>
+                <div className={s.message}>
+                    <div>Lorem Impsum</div>
+                </div>
+                <div className={s.message}>
+                    <div>Lorem Impsum</div>
+                </div>
             </div>
         </div>
     );

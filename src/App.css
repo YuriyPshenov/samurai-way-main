@@ -7,6 +7,6 @@
     width: 1076px;
     height: 100vh;
     display: flex;
-    margin: 0 auto;
+    margin: 10px auto 0 auto;
     background-color: whitesmoke;
 }
