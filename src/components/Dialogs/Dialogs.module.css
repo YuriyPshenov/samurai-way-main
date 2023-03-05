@@ -1,8 +1,6 @@
 .dialogsContainer {
-    width: 80%;
-    margin-left: 10px;
+    width: 100%;
     text-align: center;
-    background-color: royalblue;
     display: flex;
 }
 
@@ -15,11 +13,6 @@
 .dialogs .active {
     color: hotpink;
 }
-
-.dialog {
-    color: honeydew;
-}
-
 
 .messages {
     width: 70%;

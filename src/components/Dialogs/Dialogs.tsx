@@ -1,34 +1,33 @@
-import React from 'react';
+import React, {FC} from 'react';
 import s from './Dialogs.module.css';
-import {NavLink} from "react-router-dom";
+import {Dialog} from "./Dialog/Dialog";
 
+type MessagePropsType = {
+    message: string
+}
+
+const Message: FC<MessagePropsType> = (props) => {
+    return (
+        <div className={s.message}>
+            <div>{props.message}</div>
+        </div>
+    )
+}
 
 export const Dialogs = () => {
     return (
         <div className={s.dialogsContainer}>
             <div className={s.dialogs}>
                 <h3>Dialogs</h3>
-                <div className={s.dialog + ' ' + s.active}>
-                    <NavLink to="/dialogs/1">Billy Harrington</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink to="/dialogs/2">Tommy Magwayer</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink to="/dialogs/3">Chad Chedov</NavLink>
-                </div>
+                <Dialog name="Billy Harrington" id={1} />
             </div>
             <div className={s.messages}>
                 <h3>Messages</h3>
-                <div className={s.message}>
-                    <div>Lorem Impsum</div>
-                </div>
-                <div className={s.message}>
-                    <div>Lorem Impsum</div>
-                </div>
-                <div className={s.message}>
-                    <div>Lorem Impsum</div>
-                </div>
+                <Message message="Hello" />
+                <Message message="Hello" />
+                <Message message="Hello" />
+                <Message message="Hello" />
+                <Message message="Hello" />
             </div>
         </div>
     );

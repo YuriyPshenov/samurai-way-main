@@ -7,6 +7,7 @@ const Header = () => {
             <div className={s.header}>
                 <div className={s.headerSocialLogo}>
                     <img src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" alt="logo"/>
+                    <div>SOCIAL NETWORK</div>
                 </div>
                 <div className={s.headerSearch}>
                     <input type="text" placeholder="Search here"/>
