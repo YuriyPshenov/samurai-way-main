@@ -3,21 +3,25 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navigation/Navbar";
 import {Dialogs} from "./components/Dialogs/Dialogs";
+import Profile from "./components/Profile/Profile";
+import {BrowserRouter, Route} from "react-router-dom";
 
-type AppPropsType = {
 
-}
+type AppPropsType = {}
+
 
 const App = (props: AppPropsType) => {
     return (
-        <div className="app-wrapper">
-            <Header />
-            <div className="page-layout">
-                <Navbar />
-                {/*<Profile/>*/}
-                <Dialogs />
+        <BrowserRouter>
+            <div className="app-wrapper">
+                <Header/>
+                <div className="page-layout">
+                    <Navbar/>
+                    <Route component={Profile} path="/profile"/>
+                    <Route component={Dialogs} path="/dialogs"/>
+                </div>
             </div>
-        </div>
+        </BrowserRouter>
     )
 }
 
