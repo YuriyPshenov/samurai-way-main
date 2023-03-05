@@ -17,8 +17,8 @@ const App = (props: AppPropsType) => {
                 <Header/>
                 <div className="page-layout">
                     <Navbar/>
-                    <Route component={Profile} path="/profile"/>
-                    <Route component={Dialogs} path="/dialogs"/>
+                    <Route path="/profile" component={Profile} />
+                    <Route path="/dialogs" component={Dialogs} />
                 </div>
             </div>
         </BrowserRouter>

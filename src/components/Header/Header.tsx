@@ -3,8 +3,19 @@ import s from './Header.module.css';
 
 const Header = () => {
     return (
-        <header className={s.header}>
-            <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-facebook_-512.png" alt="logo"/>
+        <header className={s.headerContainer}>
+            <div className={s.header}>
+                <div className={s.headerSocialLogo}>
+                    <img src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" alt="logo"/>
+                </div>
+                <div className={s.headerSearch}>
+                    <input type="text" placeholder="Search here"/>
+                </div>
+                <div className={s.headerUserLog}>
+                    <img src="https://cdn-icons-png.flaticon.com/512/147/147133.png" alt="user's avatar"/>
+                    <div>Ricardo Milos</div>
+                </div>
+            </div>
         </header>
     );
 };
