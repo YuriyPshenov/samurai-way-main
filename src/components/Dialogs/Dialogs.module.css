@@ -1,0 +1,15 @@
+.dialogsContainer {
+    width: 80%;
+    margin-left: 10px;
+    text-align: center;
+    background-color: royalblue;
+    display: flex;
+}
+
+.dialogs {
+    width: 30%;
+}
+
+.messages {
+    width: 70%;
+}

@@ -2,16 +2,20 @@ import React from 'react';
 import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navigation/Navbar";
-import Profile from "./components/Profile/Profile";
+import {Dialogs} from "./components/Dialogs/Dialogs";
 
+type AppPropsType = {
 
-const App = () => {
+}
+
+const App = (props: AppPropsType) => {
     return (
         <div className="app-wrapper">
-            <Header/>
+            <Header />
             <div className="page-layout">
-                <Navbar/>
-                <Profile/>
+                <Navbar />
+                {/*<Profile/>*/}
+                <Dialogs />
             </div>
         </div>
     )
