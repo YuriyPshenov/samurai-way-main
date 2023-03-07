@@ -1,0 +1,9 @@
+.message {
+    border-radius: 5px;
+    background-color: honeydew;
+    margin-bottom: 10px;
+}
+
+.message div {
+    padding: 5px;
+}

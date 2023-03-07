@@ -3,7 +3,7 @@ import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 
 
-const Navbar = () => {
+export const Navbar = () => {
     return (
         <nav className={s.navigation}>
             <div className={`${s.item} ${s.active}`}>
@@ -24,5 +24,3 @@ const Navbar = () => {
         </nav>
     );
 };
-
-export default Navbar;
