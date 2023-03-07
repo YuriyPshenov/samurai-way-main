@@ -2,16 +2,13 @@ import React from 'react';
 import s from "./Posts.module.css";
 import Post from "./Post/Post";
 
+type PostsPropsType = {
+    postsData: Array<{id: number, message: string, likesCount: number}>
+}
 
-const Posts = () => {
+const Posts = (props: PostsPropsType) => {
 
-    const postsData = [
-        {id: 1, message: 'My First Post', likesCount: 1},
-        {id: 2, message: 'Tommy Magwayer', likesCount: 2},
-        {id: 3, message: 'Unknown user', likesCount: 4},
-        {id: 4, message: 'Unknown user', likesCount: 5},
-        {id: 5, message: 'Unknown user', likesCount: 2},
-    ]
+    const {postsData} = props
 
     const postsElements = postsData.map(post =>
         <Post key={post.id}

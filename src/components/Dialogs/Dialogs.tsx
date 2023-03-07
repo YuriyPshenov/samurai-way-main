@@ -1,25 +1,21 @@
 import React from 'react';
 import s from './Dialogs.module.css';
 import {Dialog} from "./Dialog/Dialog";
-import {Message} from "./Message/Message";
+import {Messages} from "./Messages/Messages";
+import {messagesPageType} from "../../redux/State";
 
 type DialogsPropsType = {
-    dialogsData: Array<{id: number, name: string}>
-    messagesData: Array<{id: number, message: string}>
+    messagesPage: messagesPageType
 }
 
 export const Dialogs = (props: DialogsPropsType) => {
 
-    const dialogsElements = props.dialogsData.map(dialog =>
+    const {dialogsData, messagesData} = props.messagesPage
+
+    const dialogsElements = dialogsData.map(dialog =>
         <Dialog key={dialog.id}
                 id={dialog.id}
                 name={dialog.name}
-        />)
-
-    const messagesElements = props.messagesData.map(message =>
-        <Message key={message.id}
-                 id={message.id}
-                 message={message.message}
         />)
 
     return (
@@ -30,7 +26,7 @@ export const Dialogs = (props: DialogsPropsType) => {
             </div>
             <div className={s.messages}>
                 <h3>Messages</h3>
-                { messagesElements }
+                <Messages messagesData={messagesData} />
             </div>
         </div>
     );

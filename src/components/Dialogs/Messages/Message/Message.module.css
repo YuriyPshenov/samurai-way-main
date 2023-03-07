@@ -1,0 +1,23 @@
+.message {
+    margin-bottom: 5px;
+}
+
+.message img {
+    width: 30px;
+    height: 30px;
+}
+
+.user {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.friend {
+    display: flex;
+    width: 100%;
+    column-gap: 10px;
+    align-items: center;
+}

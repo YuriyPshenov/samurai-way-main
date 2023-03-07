@@ -3,32 +3,32 @@ import './App.css';
 import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navigation/Navbar";
 import {Profile} from "./components/Profile/Profile";
-import {BrowserRouter, Route} from "react-router-dom";
 import {Dialogs} from "./components/Dialogs/Dialogs";
+import {StateType} from "./redux/State";
+import {Route} from "react-router-dom";
 
 type AppPropsType = {
-    dialogsData: Array<{id: number, name: string}>
-    messagesData: Array<{id: number, message: string}>
+    appState: StateType
 }
 
 const App = (props: AppPropsType) => {
 
-    const profile = () => <Profile />
-    const dialogs = () => <Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData}/>
+    const {profilePage, messagesPage, sitebar} = props.appState
+
+    const profile = () => <Profile profilePage={profilePage}/>
+    const dialogs = () => <Dialogs messagesPage={messagesPage}/>
 
     return (
-        <BrowserRouter>
-            <div className="app-wrapper">
-                <Header/>
-                <div className="page-layout">
-                    <Navbar/>
-                    <div className="content">
-                        <Route path="/profile" render={profile} />
-                        <Route path="/dialogs" render={dialogs} />
-                    </div>
+        <div className="app-wrapper">
+            <Header/>
+            <div className="page-layout">
+                <Navbar sitebar={sitebar}/>
+                <div className="content">
+                    <Route path="/profile" render={profile}/>
+                    <Route path="/dialogs" render={dialogs}/>
                 </div>
             </div>
-        </BrowserRouter>
+        </div>
     )
 }
 
