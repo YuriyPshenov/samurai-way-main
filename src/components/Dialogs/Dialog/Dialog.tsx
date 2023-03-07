@@ -10,7 +10,9 @@ type DialogPropsType = {
 export const Dialog: FC<DialogPropsType> = (props) => {
     return (
         <div className={s.dialog + ' ' + s.active}>
-            <NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>
+            <div>
+                <NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>
+            </div>
         </div>
     );
 };

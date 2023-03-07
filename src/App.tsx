@@ -6,9 +6,7 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 import Profile from "./components/Profile/Profile";
 import {BrowserRouter, Route} from "react-router-dom";
 
-
 type AppPropsType = {}
-
 
 const App = (props: AppPropsType) => {
     return (

@@ -3,3 +3,17 @@
     font-weight: 600;
     text-decoration: none;
 }
+
+.dialog {
+    margin-bottom: 10px;
+    background-color: lightgrey;
+    border-radius: 5px;
+}
+
+.dialog:hover {
+    background-color: gray;
+}
+
+.dialog div {
+    padding: 5px;
+}

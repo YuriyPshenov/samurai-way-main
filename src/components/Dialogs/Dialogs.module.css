@@ -1,7 +1,12 @@
 .dialogsContainer {
-    width: 100%;
+    width: calc(100% - 20px);
     text-align: center;
     display: flex;
+    margin: 10px;
+}
+
+.dialogsContainer h3 {
+    margin: 0 0 20px 0;
 }
 
 .dialogs {

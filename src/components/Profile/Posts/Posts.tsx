@@ -5,6 +5,21 @@ import Post from "./Post/Post";
 
 const Posts = () => {
 
+    const postsData = [
+        {id: 1, message: 'My First Post', likesCount: 1},
+        {id: 2, message: 'Tommy Magwayer', likesCount: 2},
+        {id: 3, message: 'Unknown user', likesCount: 4},
+        {id: 4, message: 'Unknown user', likesCount: 5},
+        {id: 5, message: 'Unknown user', likesCount: 2},
+    ]
+
+    const postsElements = postsData.map(post =>
+        <Post key={post.id}
+              id={post.id}
+              message={post.message}
+              likesCount={post.likesCount}
+        />)
+
     return (
         <div className={s.postsContainer}>
             My posts
@@ -13,8 +28,7 @@ const Posts = () => {
                 <button>Add post</button>
             </div>
             <div className={s.posts}>
-                <Post message="Hi, how are you?" likesCount={5}/>
-                <Post message="It's my first post" likesCount={6}/>
+                { postsElements }
             </div>
         </div>
     );
