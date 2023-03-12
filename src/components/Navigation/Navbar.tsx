@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import Friend from "./Friend/Friend";
@@ -8,7 +8,7 @@ type NavbarPropsType = {
     sitebar: SitebarType
 }
 
-export const Navbar = (props: NavbarPropsType) => {
+export const Navbar: FC<NavbarPropsType> = (props) => {
 
     const {friends} = props.sitebar
 

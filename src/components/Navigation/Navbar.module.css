@@ -1,8 +1,11 @@
 .navigation {
-    width: 20%;
+    width: 200px;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
+    display: block;
+    position: fixed;
+    margin-top: 95px;
 }
 
 .item {

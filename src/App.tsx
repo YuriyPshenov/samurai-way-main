@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './App.css';
 import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navigation/Navbar";
@@ -9,20 +9,22 @@ import {Route} from "react-router-dom";
 
 type AppPropsType = {
     appState: StateType
+    addPost: (postMessage: string) => void
 }
 
-const App = (props: AppPropsType) => {
+const App: FC<AppPropsType> = (props) => {
 
-    const {profilePage, messagesPage, sitebar} = props.appState
 
-    const profile = () => <Profile profilePage={profilePage}/>
+    const {profilePage, messagesPage, sidebar} = props.appState
+
+    const profile = () => <Profile profilePage={profilePage} addPost={props.addPost}/>
     const dialogs = () => <Dialogs messagesPage={messagesPage}/>
 
     return (
         <div className="app-wrapper">
             <Header/>
+            <Navbar sitebar={sidebar}/>
             <div className="page-layout">
-                <Navbar sitebar={sitebar}/>
                 <div className="content">
                     <Route path="/profile" render={profile}/>
                     <Route path="/dialogs" render={dialogs}/>

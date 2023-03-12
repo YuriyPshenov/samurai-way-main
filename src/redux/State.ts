@@ -1,3 +1,4 @@
+import {rerenderEntireTree} from "../render";
 
 export type MessagesDataType = {
     userId: number
@@ -23,7 +24,7 @@ export type SitebarType = {
 export type StateType = {
     profilePage: ProfilePageType
     messagesPage: messagesPageType
-    sitebar: SitebarType
+    sidebar: SitebarType
 }
 
 export const state: StateType = {
@@ -73,7 +74,7 @@ export const state: StateType = {
             ]
         }
     },
-    sitebar: {
+    sidebar: {
         friends: [
             {id: 1, name: 'Billy Harrington'},
             {id: 2, name: 'Tommy Maguire'},
@@ -83,4 +84,9 @@ export const state: StateType = {
             {id: 6, name: 'Unknown user'},
         ]
     }
+}
+
+export const addPost = (postMessage: string) => {
+    state.profilePage.postsData.push({id: 10 + postMessage.length, message: postMessage, likesCount: 0})
+    rerenderEntireTree(state, addPost)
 }

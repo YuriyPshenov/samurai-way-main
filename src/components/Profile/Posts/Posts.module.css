@@ -1,7 +1,10 @@
 .postsContainer {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
     padding: 5px;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .newPost {

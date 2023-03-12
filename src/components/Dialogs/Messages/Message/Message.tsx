@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import s from './Message.module.css';
 
 type MessagePropsType = {
@@ -10,7 +10,7 @@ type MessagePropsType = {
     message: string
 }
 
-export const Message = (props: MessagePropsType) => {
+export const Message: FC<MessagePropsType> = (props) => {
 
     const {
         userId,

@@ -5,18 +5,16 @@
 }
 
 .page-layout {
-    width: 1076px;
+    width: 1000px;
     height: 100vh;
     display: flex;
     margin: 20px auto 0 auto;
 }
 
 .content {
-    width: 80%;
+    width: 100%;
     margin-left: 10px;
     text-align: center;
-    background-color: white;
-    border-radius: 10px;
 }
 
 .content img {
